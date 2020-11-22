@@ -6,7 +6,58 @@ public class HW {
 	/* Ќапишите функцию по имени printLandingTime, котора€ получает врем€ старта
 ракеты (часы, минуты,секунды), врем€ полета в секундах и выводит на экран врем€
 приземлени€ ракеты (часы, минуты, секунды) .*/
-	public static void printLandingTime(int h, int m, int s, int timeF)
+	public static void printLandingTime2(int h, int m, int s, int timeF)
+	{
+		int days = 0;
+		if(h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59 || timeF == 0)
+		{	
+			System.out.println("It is not real time");
+			return;
+		}
+		int time = h * 3600 + m * 60 + s;
+		int newTime = time + timeF;
+		int newH = newTime/3600;
+		int newM = (newTime - newH * 3600)/60;
+		int newS = (newTime - newH * 3600 - newM * 60);
+		
+		if(newH >= 24)
+		{
+			days = newH / 24;
+			newH = newH - 24*days;
+		}
+		
+		if(newH > 1)
+			System.out.printf("%d hours ", newH);
+		else if(newH == 1)
+			System.out.printf("%d hour ", newH);
+		if(newM > 1)
+			System.out.printf("%d minutes ", newM);
+		else if(newM == 1)
+			System.out.printf("%d minute ", newM);
+		if(newS > 1)
+			System.out.printf("%d seconds ", newS);
+		else if(newS==1)
+			System.out.printf("%d second ", newS);
+		if(newM == 0 && newS == 0 && newH != 0)
+			System.out.printf(" exactly ");
+		if(days == 1)	
+			{
+				if(newH==0 && newM ==0 & newS==0)
+					System.out.printf("%d day ", days);
+				else
+					System.out.printf(" (+%d day) ", days);
+			}
+		else if(days>1)
+		{
+			if(newH==0 && newM ==0 & newS==0)
+				System.out.printf("%d days ", days);
+			else
+				System.out.printf("(+%d days)", days);
+		}
+		
+		
+	}
+	/*public static void printLandingTime(int h, int m, int s, int timeF)
 	{
 		int days = 0;
 		if(h < 0 || h > 23 || m < 0 || m > 59 || s < 0 || s > 59 || timeF == 0)
@@ -302,7 +353,8 @@ public class HW {
 				}
 			}
 	}
-	
+
+	 */
 	/*ѕроверка числа на четность*/
 	
 	public static boolean isEven(int number)
@@ -417,34 +469,58 @@ public class HW {
 	public static void main(String[] args) {
 		System.out.println("Working function printingLandTime\n");
 		System.out.println("----------------------------------------------\n");
-		printLandingTime(0,0,0, 1);  //1 second
-		printLandingTime(0,0,0, 30);  //30 seconds
-		printLandingTime(0,0,0, 60);  //1 minute
-		printLandingTime(0,0,0, 120); //2 minutes
-		printLandingTime(0,0,0, 3660);//1 hour, 1 minute
-		printLandingTime(0,0,0, 3661);//1 hour, 1 minute, 1 second
-		printLandingTime(0,0,0, 3690);//1 hour, 1 minute, 30 seconds
-		printLandingTime(0,0,0, 3720);//1 hour, 2 minutes
-		printLandingTime(0,0,0, 3730);//1 hour, 2 minutes, 10 seconds
-		printLandingTime(0,0,0, 86400);//1 day		
-		printLandingTime(0,0,0, 86401);//1 second (+1 day)
-		printLandingTime(0,0,0, 90000);//1 hour exactly(+1 day)
-		printLandingTime(0,0,0, 93600);//2 hours exactly(+1 day)
-		printLandingTime(0,0,0, 90061);//1 hour, 1 minute, 1 second (+ 1 day)
-		printLandingTime(0,0,0, 90125);//1 hour, 2 minutes, 5 seconds (+ 1 day)		
-		printLandingTime(0,0,0, 93725);//2 hours, 2 minutes, 5 seconds (+ 1 day)		
-		printLandingTime(0,0,0, 172800);//2 days
-		printLandingTime(0,0,0, 172801);//1 second (+2 days)
-		printLandingTime(0,0,0, 176400);//1 hour (+2 days)
-		printLandingTime(0,0,0, 180000);//2 hours (+ 2days)
-		printLandingTime(0,0,0, 180001);//2 hours, 1 second (+ 2 days)
-		printLandingTime(0,0,0, 180091);//2 hours, 1 minute, 31 seconds (+ 2 days)
-		printLandingTime(0,0,0, 180191);//2 hours, 3 minutes, 11 seconds (+ 2 days)
+		printLandingTime2(0,0,0, 1);  //1 second
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 30);  //30 seconds
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 60);  //1 minute
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 120); //2 minutes
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 7200);//2 hours exactly
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 3660);//1 hour, 1 minute
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 3661);//1 hour, 1 minute, 1 second
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 3690);//1 hour, 1 minute, 30 seconds
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 3720);//1 hour, 2 minutes
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 3730);//1 hour, 2 minutes, 10 seconds
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 86400);//1 day		
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 86401);//1 second (+1 day)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 90000);//1 hour exactly(+1 day)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 93600);//2 hours exactly(+1 day)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 90061);//1 hour, 1 minute, 1 second (+ 1 day)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 90125);//1 hour, 2 minutes, 5 seconds (+ 1 day)		
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 93725);//2 hours, 2 minutes, 5 seconds (+ 1 day)		
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 172800);//2 days
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 172801);//1 second (+2 days)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 176400);//1 hour exactly(+2 days)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 180000);//2 hours exactly(+ 2days)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 180001);//2 hours, 1 second (+ 2 days)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 180091);//2 hours, 1 minute, 31 seconds (+ 2 days)
+		System.out.println("\n********");
+		printLandingTime2(0,0,0, 180191);//2 hours, 3 minutes, 11 seconds (+ 2 days)
 		
 		char c = 'n';
 		int h, m, s, time;
 		Scanner input = new Scanner(System.in);
-		System.out.println("Do you want to put yours time? If yes, press y, else press n");
+		System.out.println("\nDo you want to put yours time? If yes, press y, else press n");
 		c = input.next().charAt(0);
 		if(c == 'y')
 		{
@@ -456,7 +532,7 @@ public class HW {
 			s = input.nextInt();
 			System.out.println("Please input time of flight");
 			time = input.nextInt();
-			printLandingTime(h, m, s, time);
+			printLandingTime2 (h, m, s, time);
 		}
 		System.out.println("\n----------------------------------------------\n");
 		System.out.println("Result of working function getMax()\n");
