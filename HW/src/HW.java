@@ -67,7 +67,6 @@ public class HW {
 			if((number%10)%2 == 0)
 			{
 				number = number/10;
-				isEven(number);
 			}
 			else 
 				return false;
@@ -83,7 +82,6 @@ public class HW {
 			if((number%10)%2 == 1)
 			{
 				number = number/10;
-				isEven(number);
 			}
 			else 
 				return false;
@@ -295,6 +293,8 @@ public class HW {
 		System.out.println("\n**********************************************\n");
 		System.out.println("Print the real of comp4 "  + comp4.getReal() +  " and image " + comp4.getImage());
 		System.out.println("\n**********************************************\n");
+		
+		input.close();		
 
 	}
 
